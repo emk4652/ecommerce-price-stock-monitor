@@ -1,0 +1,34 @@
+{
+  "title": "E-Commerce Price & Stock Monitor Input",
+  "type": "object",
+  "schemaVersion": 1,
+  "properties": {
+    "productUrls": {
+      "title": "Product or Store URLs",
+      "type": "array",
+      "description": "Direct product page URLs (Shopify, WooCommerce, Magento, BigCommerce, or any Schema.org/JSON-LD store).",
+      "editor": "stringList",
+      "default": [
+        "https://books.toscrape.com/catalogue/a-light-in-the-attic_1000/index.html"
+      ]
+    },
+    "targetPriceThreshold": {
+      "title": "Target Alert Price Threshold",
+      "type": "number",
+      "description": "Optional price ceiling. If the extracted product price is equal to or below this value, priceAlertTriggered is set to true.",
+      "default": 60
+    },
+    "webhookUrl": {
+      "title": "Alert Webhook URL (Slack / Discord / n8n / Make)",
+      "type": "string",
+      "description": "Optional HTTP POST webhook endpoint triggered whenever a price alert or stock change occurs."
+    },
+    "tryShopifyJsonEndpoint": {
+      "title": "Use Fast Shopify .json API When Available",
+      "type": "boolean",
+      "description": "Automatically probes the native Shopify product JSON endpoint for full variant-level inventory and SKU accuracy.",
+      "default": true
+    }
+  },
+  "required": ["productUrls"]
+}

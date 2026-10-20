@@ -1,0 +1,38 @@
+{
+  "actorSpecification": 1,
+  "name": "ecommerce-price-stock-monitor",
+  "title": "E-Commerce Competitive Price & Stock Monitor",
+  "description": "Extracts real-time product pricing, currency, SKU, availability status, and variant inventory across Shopify, WooCommerce, and Schema.org Product stores with automated target price alerts.",
+  "version": "1.0.0",
+  "minMemoryMbytes": 256,
+  "maxMemoryMbytes": 1024,
+  "input": "./input_schema.json",
+  "dockerfile": "../Dockerfile",
+  "storages": {
+    "dataset": {
+      "actorSpecification": 1,
+      "title": "Monitored Products Dataset",
+      "views": {
+        "overview": {
+          "title": "Price & Stock Overview",
+          "transformation": {
+            "fields": [
+              "title",
+              "brand",
+              "price",
+              "currency",
+              "inStock",
+              "sku",
+              "platform",
+              "priceAlertTriggered",
+              "url"
+            ]
+          },
+          "display": {
+            "component": "table"
+          }
+        }
+      }
+    }
+  }
+}
